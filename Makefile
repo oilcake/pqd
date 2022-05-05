@@ -1,5 +1,11 @@
-mindful:
-	docker exec -it mindful bash
+mindful: build
+	docker-compose up mindful_db -d && docker exec -it mindful bash
 
-amnesiac:
-	docker exec -it amnesiac_db bash
+amnesiac: build
+	docker-compose up amnesiac_db -d && docker exec -it amnesiac bash
+
+build:
+	docker-compose build
+
+stop:
+	docker-compose down
